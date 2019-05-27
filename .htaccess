@@ -1,0 +1,13 @@
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+</IfModule>
+RewriteEngine on
+RewriteBase /
+RewriteRule ^api/auth$ api/auth.php [L]
+RewriteRule ^api/post/([0-9]*)$ api/post.php?id=$1 [L]
+RewriteRule ^api/posts$ api/posts.php [L]
+RewriteRule ^api/posts/([0-9]*)/([0-9]*)$ api/posts.php?to=$1&do=$2 [L]
+RewriteRule ^api/posts/([0-9]*)/comments$ api/comments.php?id=$1 [L]
+RewriteRule ^api/posts/([0-9]*)/comments/([0-9]*)$ api/commentsDel.php?id=$1&id_comment=$2 [L]
+RewriteRule ^api/posts/tag/(.*)$ api/search.php?tag=$1 [L]
+RewriteRule ^api/reg$ api/register.php [L]
